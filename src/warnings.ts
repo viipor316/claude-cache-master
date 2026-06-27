@@ -9,7 +9,11 @@ const UUID_PATTERN =
 export function detectVolatileContent(text: string): string[] {
   const warnings: string[] = [];
 
-  if (TIMESTAMP_PATTERNS.some((p) => p.test(text))) {
+  // Strip UUIDs first so their embedded digit runs don't also trigger the
+  // timestamp check (e.g. "...a716-446655440000" looks like a 12-digit epoch).
+  const textWithoutUuids = text.replace(UUID_PATTERN, "");
+
+  if (TIMESTAMP_PATTERNS.some((p) => p.test(textWithoutUuids))) {
     warnings.push(
       "You included what looks like a timestamp inside a cached block. " +
         "This will break the cache prefix match on every request and cause a 100% cache miss rate."

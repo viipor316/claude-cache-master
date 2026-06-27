@@ -28,4 +28,12 @@ describe("detectVolatileContent", () => {
     );
     expect(warnings.some((w) => /uuid/i.test(w))).toBe(true);
   });
+
+  it("does not also flag a timestamp from digits embedded in a UUID", () => {
+    const warnings = detectVolatileContent(
+      "trace-id: 550e8400-e29b-41d4-a716-446655440000"
+    );
+    expect(warnings.some((w) => /timestamp/i.test(w))).toBe(false);
+    expect(warnings).toHaveLength(1);
+  });
 });

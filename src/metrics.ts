@@ -50,22 +50,28 @@ export function resetCumulativeMetrics(): void {
   cumulativeCostSaved = 0;
 }
 
+const BOX_WIDTH = 58;
+
 function bar(rate: number, width = 20): string {
   const filled = Math.round(rate * width);
   return "█".repeat(filled) + "▒".repeat(width - filled);
 }
 
+function row(content: string): string {
+  return "│ " + content.padEnd(BOX_WIDTH - 1) + "│";
+}
+
 export function printMetrics(metrics: CacheMetrics): void {
   const hitPct = (metrics.cacheHitRate * 100).toFixed(0);
   const lines = [
-    "┌────────────────────────────────────────────────────────┐",
-    "│  CLAUDE CACHE METRICS                                   │",
-    "├────────────────────────────────────────────────────────┤",
-    `│  Cache Hit Rate:  ${bar(metrics.cacheHitRate)} ${hitPct}%`.padEnd(60) + "│",
-    `│  Tokens Saved:    ${metrics.tokensSaved.toLocaleString()} tokens`.padEnd(60) + "│",
-    `│  Est. Cost Saved: $${metrics.estCostSaved.toFixed(4)} (this turn)`.padEnd(60) + "│",
-    `│  Cumulative Saved: $${metrics.cumulativeCostSaved.toFixed(4)} this session`.padEnd(60) + "│",
-    "└────────────────────────────────────────────────────────┘",
+    "┌" + "─".repeat(BOX_WIDTH) + "┐",
+    row("CLAUDE CACHE METRICS"),
+    "├" + "─".repeat(BOX_WIDTH) + "┤",
+    row(`Cache Hit Rate:  ${bar(metrics.cacheHitRate)} ${hitPct}%`),
+    row(`Tokens Saved:    ${metrics.tokensSaved.toLocaleString()} tokens`),
+    row(`Est. Cost Saved: $${metrics.estCostSaved.toFixed(4)} (this turn)`),
+    row(`Cumulative Saved: $${metrics.cumulativeCostSaved.toFixed(4)} this session`),
+    "└" + "─".repeat(BOX_WIDTH) + "┘",
   ];
   console.log(lines.join("\n"));
 }

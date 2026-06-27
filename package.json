@@ -1,6 +1,6 @@
 {
   "name": "claude-cache-master",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A zero-config wrapper around the Anthropic SDK that makes Claude prompt caching dead simple, with built-in cost-savings tracking and cache-invalidation warnings.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
