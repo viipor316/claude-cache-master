@@ -1,0 +1,36 @@
+{
+  "name": "claude-cache-master",
+  "version": "0.1.0",
+  "description": "A zero-config wrapper around the Anthropic SDK that makes Claude prompt caching dead simple, with built-in cost-savings tracking and cache-invalidation warnings.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build",
+    "example": "ts-node examples/basic.ts"
+  },
+  "keywords": [
+    "claude",
+    "anthropic",
+    "llm",
+    "prompt-caching",
+    "ai"
+  ],
+  "license": "MIT",
+  "author": "",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "ts-node": "^10.9.2",
+    "@types/node": "^22.9.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
