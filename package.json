@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc",
     "prepublishOnly": "npm run build",
-    "example": "ts-node examples/basic.ts"
+    "example": "ts-node examples/basic.ts",
+    "test": "vitest run"
   },
   "keywords": [
     "claude",
@@ -23,9 +24,10 @@
     "@anthropic-ai/sdk": "^0.32.1"
   },
   "devDependencies": {
-    "typescript": "^5.6.3",
+    "@types/node": "^22.9.0",
     "ts-node": "^10.9.2",
-    "@types/node": "^22.9.0"
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.9"
   },
   "files": [
     "dist"

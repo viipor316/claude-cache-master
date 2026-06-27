@@ -1,5 +1,9 @@
 # claude-cache-master
 
+[![CI](https://github.com/viipor316/claude-cache-master/actions/workflows/ci.yml/badge.svg)](https://github.com/viipor316/claude-cache-master/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/claude-cache-master.svg)](https://www.npmjs.com/package/claude-cache-master)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A zero-config wrapper around the Anthropic SDK that makes **Claude prompt caching** dead simple — with built-in cost-savings tracking and cache-invalidation warnings.
 
 Prompt caching can cut your Claude API input costs by up to 90%, but wiring up the multi-block message structure and `cache_control` breakpoints by hand is tedious and easy to get wrong. This package handles the structure for you and prints exactly how much you're saving.
